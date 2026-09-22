@@ -4,54 +4,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import br.com.palm.devshowcase.dto.ProjectRequestDTO;
-import br.com.palm.devshowcase.dto.ProjectResponseDTO;
-import br.com.palm.devshowcase.dto.ProfileRequestDTO;
-import br.com.palm.devshowcase.dto.ProfileResponseDTO;
-import br.com.palm.devshowcase.dto.FeedbackRequestDTO;
-import br.com.palm.devshowcase.service.ProjectService;
-import br.com.palm.devshowcase.service.ProfileService;
+import br.com.palm.devshowcase.dto.TechnologyResponseDTO;
+import br.com.palm.devshowcase.service.TechnologyService;
 
-@RestController
-@RequestMapping("/api/projects")
-public class ProjectController {
+@RestController @RequestMapping("/api/technologies")
+public class TechnologyController {
 
-    @Autowired
-    private ProjectService projectService;
-
-    @GetMapping
-    public ResponseEntity<List<ProjectResponseDTO>> listarProjetos() {
-        return ResponseEntity.ok(projectService.listarTodos());
-    }
-
-    @PostMapping
-    public ResponseEntity<ProjectResponseDTO> criarProjeto(@RequestBody ProjectRequestDTO dto) {
-        return ResponseEntity.ok(projectService.criar(dto));
-    }
-
-    @PostMapping("/{id}/feedbacks")
-    public ResponseEntity<Void> adicionarFeedback(@PathVariable Long id, @RequestBody FeedbackRequestDTO dto) {
-        projectService.adicionarFeedback(id, dto);
-        return ResponseEntity.ok().build();
-    }
-}
-
-@RestController
-@RequestMapping("/api/profiles")
-public class ProfileController {
-
-    @Autowired
-    private ProfileService profileService;
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ProfileResponseDTO> buscarPorId(@PathVariable Long id) {
-        return ResponseEntity.ok(profileService.buscarPorId(id));
-    }
-
-    @PostMapping
-    public ResponseEntity<ProfileResponseDTO> criarProfile(@RequestBody ProfileRequestDTO dto) {
-        return ResponseEntity.ok(profileService.criar(dto));
+	@Autowired
+	private TechnologyService service;
+	
+	@GetMapping
+    public ResponseEntity<List<TechnologyResponseDTO>> buscarTodos() {
+        return ResponseEntity.ok(service.buscarTodos());
     }
 }
