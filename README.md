@@ -1,4 +1,8 @@
 
+## testar se estar fucionando
+https://backjv-api.onrender.com//api/technologies
+
+
 
 ___________________________________________________________
 ## 1 ) O que ele faz é cadastrar um novo feedback para o projeto com ID = 1.
