@@ -6,7 +6,7 @@ POST http://localhost:3000/api/projects/1/feedbacks
 {
   "nota": 5,
   "comentario": "meu projeto!",
-  "author": "Lucas",
+  "author": "Luk",
   "message": "Gostei muito da implementação."
 }
 ___________________________________________________________________
